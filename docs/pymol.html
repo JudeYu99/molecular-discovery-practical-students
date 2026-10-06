@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Step-by-step PyMOL guide for the Day 1 Molecular Discovery Practical.">
+  <meta name="theme-color" content="#122a43">
+  <title>PyMOL Practical · Molecular Discovery Practical</title>
+  <style>
+    :root { color-scheme:light; --navy:#122a43; --blue:#145a82; --teal:#137c80; --ink:#172b3a; --muted:#4d6374; --line:#d6e3e8; --paper:#f4f8fa; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:var(--blue); }
+    .wrap { width:min(1100px,calc(100% - 40px)); margin:auto; }
+    header { background:var(--navy); color:var(--white); padding:19px 0; }
+    header .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { color:var(--white); text-decoration:none; font-size:1.07rem; font-weight:760; }
+    .unit { color:#d4e8ee; font-size:.91rem; text-align:right; }
+    main { padding:38px 0 70px; }
+    .back { display:inline-block; margin-bottom:18px; font-weight:720; }
+    .eyebrow { color:var(--teal); font-size:.82rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.2rem,5vw,3.45rem); line-height:1.1; letter-spacing:-.04em; margin:8px 0 14px; }
+    .intro { color:var(--muted); max-width:800px; font-size:1.11rem; margin:0 0 25px; }
+    .start { background:#e8f2f4; border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:19px 22px; margin-bottom:28px; }
+    .start h2 { font-size:1.15rem; margin:0 0 6px; }
+    .start p { margin:0; color:#33536a; }
+    .layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:23px; align-items:start; }
+    .contents { position:sticky; top:18px; background:var(--white); border:1px solid var(--line); border-radius:13px; padding:18px; }
+    .contents h2 { font-size:1rem; margin:0 0 10px; }
+    .contents ol { margin:0; padding-left:20px; font-size:.9rem; }
+    .contents li+li { margin-top:7px; }
+    .steps { display:grid; gap:18px; }
+    .step { background:var(--white); border:1px solid var(--line); border-radius:15px; box-shadow:0 8px 24px rgba(18,42,67,.045); padding:23px 25px; scroll-margin-top:18px; }
+    .step .number { color:var(--teal); font-size:.8rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .step h2 { font-size:1.5rem; line-height:1.22; margin:4px 0 7px; }
+    .step .purpose { color:var(--muted); margin:0 0 13px; }
+    .step ol, .step ul { margin:0; padding-left:21px; }
+    .step li+li { margin-top:7px; }
+    .check { background:#f0f6f8; border-radius:8px; padding:10px 13px; margin:16px 0 0; font-size:.93rem; }
+    .question { margin:14px 0 0; padding:12px 15px; border:1px solid #c5dce2; border-radius:8px; background:#f7fbfc; }
+    .question strong { color:var(--navy); }
+    .downloads { display:flex; gap:10px; flex-wrap:wrap; margin-top:13px; }
+    .downloads a { display:inline-block; padding:8px 11px; border:1px solid var(--blue); border-radius:8px; font-weight:700; text-decoration:none; }
+    details { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+    summary { color:var(--blue); cursor:pointer; font-weight:740; }
+    details p { color:var(--muted); font-size:.9rem; margin:9px 0; }
+    pre { overflow:auto; background:#eef4f6; border-radius:8px; padding:11px 13px; font-size:.88rem; line-height:1.5; }
+    .resources { background:var(--white); border:1px solid var(--line); border-radius:13px; padding:21px 24px; margin-top:24px; }
+    .resources h2 { font-size:1.2rem; margin:0 0 9px; }
+    .resources ul { margin:0; padding-left:20px; }
+    footer { border-top:1px solid var(--line); padding:24px 0 34px; color:var(--muted); font-size:.92rem; }
+    footer .wrap { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    footer p { margin:0; }
+    @media (max-width:800px) { .layout { grid-template-columns:1fr; } .contents { position:static; } .contents ol { columns:2; } }
+    @media (max-width:600px) { header .wrap { align-items:flex-start; flex-direction:column; gap:3px; } .unit { text-align:left; } .contents ol { columns:1; } .step { padding:20px; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="brand" href="index.html">Molecular Discovery Practical</a><div class="unit">Department of Pharmacology · University of Cambridge</div></div></header>
+  <main class="wrap">
+    <a class="back" href="index.html">← Back to the two-day overview</a>
+    <div class="eyebrow">Day 1 · guided activity</div>
+    <h1>PyMOL practical</h1>
+    <p class="intro">Work through two experimental structures of the same mouse Abl kinase domain. The first contains imatinib. The second contains PD173955. Use them to practise navigation, pocket selection, contact inspection and structural comparison. Record your own observations as you work.</p>
+    <section class="start" aria-labelledby="start-title"><h2 id="start-title">Before opening PyMOL</h2><p>Save both PDB files in one folder. Start with 1IEP, which contains imatinib as ligand STI. Add 1M52 only at Step 5, where you will compare its ligand P17. Both files contain two protein chains, so focus on chain A throughout. Keep the original files unchanged.</p><div class="downloads"><a href="https://files.rcsb.org/download/1IEP.pdb" download>Download 1IEP PDB</a><a href="https://files.rcsb.org/download/1M52.pdb" download>Download 1M52 PDB</a><a href="https://www.rcsb.org/structure/1IEP" target="_blank" rel="noopener noreferrer">1IEP record</a><a href="https://www.rcsb.org/structure/1M52" target="_blank" rel="noopener noreferrer">1M52 record</a></div></section>
+    <div class="layout">
+      <nav class="contents" aria-label="PyMOL practical contents"><h2>On this page</h2><ol>
+        <li><a href="#load">Load and navigate</a></li>
+        <li><a href="#represent">Choose representations</a></li>
+        <li><a href="#site">Show the binding site</a></li>
+        <li><a href="#contacts">Measure contacts</a></li>
+        <li><a href="#compare">Compare structures</a></li>
+        <li><a href="#surface">Inspect surface and charge</a></li>
+        <li><a href="#mutation">Explore a mutation</a></li>
+        <li><a href="#save">Save your work</a></li>
+      </ol></nav>
+      <div class="steps">
+        <section class="step" id="load" aria-labelledby="load-title"><div class="number">Step 1</div><h2 id="load-title">Load and navigate</h2><p class="purpose">First establish which structure and ligand instance you are viewing.</p><ol>
+          <li>Open <code>1IEP.pdb</code> in PyMOL using the File menu. Find its name in the object panel.</li>
+          <li>Rotate the structure, zoom towards it and move it across the screen. Use the mouse guide displayed in PyMOL if the controls differ on your laptop.</li>
+          <li>Show the sequence panel using Display → Sequence. Locate the protein chain and the bound ligand. Check whether the file contains more than one protein chain or ligand copy.</li>
+          <li>Find imatinib in chain A. In this PDB file its residue name is <code>STI</code> and its residue number is <code>201</code>. Notice the second protein and ligand copy in chain B.</li>
+        </ol><p class="question"><strong>Record:</strong> Which chain and ligand copy are you using? What does the PDB entry report as the experimental method and resolution?</p><p class="check"><strong>Check:</strong> You can return to a whole-protein view and identify STI A 201 unambiguously.</p></section>
+
+        <section class="step" id="represent" aria-labelledby="represent-title"><div class="number">Step 2</div><h2 id="represent-title">Choose representations</h2><p class="purpose">Use different views to answer different structural questions.</p><ol>
+          <li>Display the protein as a cartoon. Colour each chain differently if the structure has several chains.</li>
+          <li>Display STI A 201 as sticks. Identify its oxygen and nitrogen atoms by their colours.</li>
+          <li>Temporarily show spheres for any waters or metals near the ligand. Distinguish these from protein atoms and from the ligand.</li>
+          <li>Try a protein surface, then hide it again when it obscures the pocket. Keep a clean cartoon-and-sticks view for the next activity.</li>
+        </ol><p class="question"><strong>Think:</strong> Which representation best shows the fold? Which best shows the ligand's atomic contacts?</p><p class="check"><strong>Check:</strong> Your view makes chain A, STI and nearby waters distinguishable.</p></section>
+
+        <section class="step" id="site" aria-labelledby="site-title"><div class="number">Step 3</div><h2 id="site-title">Show the binding site</h2><p class="purpose">Select a single ligand and complete protein residues within 5 Å.</p><ol>
+          <li>Select STI A 201. Include its chain and residue identifier so the chain B copy is excluded.</li>
+          <li>Select protein atoms within 5 Å of that ligand, then expand the selection to whole residues. Showing only the nearby atoms can make side chains appear broken.</li>
+          <li>Show the selected residues as sticks while leaving the rest of the protein as a cartoon. Centre the view on the ligand and pocket.</li>
+          <li>Label a few useful residues, including Thr315, Met318 and Glu286. These are examples to inspect, not a complete interaction list.</li>
+        </ol><p class="question"><strong>Record:</strong> Name three pocket residues within 5 Å of STI. Which one is the gatekeeper residue?</p><p class="check"><strong>Check:</strong> STI and the selected side chains are complete, and the residue labels are readable.</p>
+          <details><summary>Optional PyMOL selection commands</summary><p>These commands use the full 1IEP file and restrict the protein selection to chain A. If PyMOL gives your loaded object a different name, replace <code>1IEP</code> in the commands with the name shown in the object panel.</p><pre><code>select ligand, 1IEP and chain A and resn STI and resi 201
+select pocket, byres ((1IEP and chain A and polymer.protein) within 5 of ligand)
+show sticks, ligand or pocket
+zoom ligand or pocket</code></pre></details>
+        </section>
+
+        <section class="step" id="contacts" aria-labelledby="contacts-title"><div class="number">Step 4</div><h2 id="contacts-title">Measure contacts</h2><p class="purpose">Use geometry and chemistry together when discussing an interaction.</p><ol>
+          <li>Open Wizard → Measurement, then pick one ligand atom and one nearby protein atom. Display their distance in Å.</li>
+          <li>Inspect possible polar contacts between the ligand and pocket. Keep only the contacts you can explain clearly in the image.</li>
+          <li>For each proposed interaction, identify the two atoms, residue name and measured distance. Inspect Thr315, Met318 and Glu286 first. Consider whether the atoms could act as donor or acceptor, or carry charge.</li>
+          <li>Check whether waters, alternate conformations, missing hydrogens or uncertain protonation could change the interpretation.</li>
+        </ol><p class="question"><strong>Record:</strong> Give one atom pair and its distance. Is a short heavy-atom distance alone enough to call it a hydrogen bond?</p><p class="check"><strong>Check:</strong> You can explain at least one displayed distance without treating every short contact as a confirmed hydrogen bond.</p><p>To inspect the same deposited pose in ContactCanvas, upload a matching protein and ligand file separately. These example pairs contain chain A coordinates from RCSB PDB. The proteins have no added hydrogens, so hydrogen-bond assignments may be incomplete.</p><div class="downloads"><a href="examples/1IEP_chainA_protein.pdb" download>1IEP protein PDB</a><a href="examples/1IEP_STI_A201_bound.sdf" download>1IEP bound ligand SDF</a><a href="examples/1M52_chainA_protein.pdb" download>1M52 protein PDB</a><a href="examples/1M52_P17_A119_bound.sdf" download>1M52 bound ligand SDF</a></div>
+          <details><summary>Optional command for possible polar contacts</summary><p>This creates a measurement object for putative polar contacts. Inspect the geometry and chemistry yourself.</p><pre><code>distance possible_polar_contacts, ligand, pocket, 3.5, mode=2</code></pre></details>
+        </section>
+
+        <section class="step" id="compare" aria-labelledby="compare-title"><div class="number">Step 5</div><h2 id="compare-title">Compare structures</h2><p class="purpose">Look for changes that could matter near the binding site.</p><ol>
+          <li>Load <code>1M52.pdb</code> as a second object. This structure contains PD173955 as <code>P17</code>. In chain A its ligand residue number is <code>119</code>. Give the second protein a contrasting colour.</li>
+          <li>Superpose the protein chains, then inspect both the whole-protein alignment and the local ligand-binding region.</li>
+          <li>Compare the imatinib and PD173955 positions, Thr315 and the activation loop. Find Lys271 and Glu286 in each structure and measure the shortest distance between their charged side-chain atoms.</li>
+          <li>Toggle one object off and on to see which features belong to each structure.</li>
+        </ol><p class="question"><strong>Record:</strong> One similarity and one difference between the binding sites. How does the Lys271-Glu286 distance compare between structures?</p><p class="check"><strong>Check:</strong> You can point to one local difference after aligning chain A of each structure.</p><details><summary>Optional alignment command</summary><pre><code>align (1M52 and chain A and polymer.protein), (1IEP and chain A and polymer.protein)</code></pre></details></section>
+
+        <section class="step" id="surface" aria-labelledby="surface-title"><div class="number">Step 6 · guided demonstration</div><h2 id="surface-title">Inspect surface and charge</h2><p class="purpose">Compare the pocket's shape with the ligand and a prepared electrostatic view.</p><ol>
+          <li>Show the protein surface around the selected binding site. Rotate the view to judge whether the ligand sits in a groove, cavity or exposed region.</li>
+          <li>If the instructor provides an APBS electrostatic map, inspect areas with different potential near charged or polar parts of the ligand.</li>
+          <li>Return to the cartoon-and-sticks view before moving on. A surface can hide important atom-level contacts.</li>
+        </ol><p class="check"><strong>Check:</strong> You can describe one observation about shape or charge complementarity without treating the image as a binding-energy calculation.</p></section>
+
+        <section class="step" id="mutation" aria-labelledby="mutation-title"><div class="number">Step 7 · guided demonstration</div><h2 id="mutation-title">Explore a mutation</h2><p class="purpose">Use a side-chain change to form a testable structural question.</p><ol>
+          <li>Open Wizard → Mutagenesis and select Thr315 in chain A of 1IEP.</li>
+          <li>Change it to isoleucine and inspect several proposed side-chain rotamers.</li>
+          <li>Look for a possible clash or a changed contact with the ligand. Compare the proposed side chain with the original one.</li>
+          <li>Leave the wizard without treating a suggested rotamer as an experimentally observed mutation.</li>
+        </ol><p class="question"><strong>Think:</strong> What contact or space near STI might change? What would require experimental testing?</p><p class="check"><strong>Check:</strong> You can state one plausible effect and one reason the model alone cannot establish it.</p></section>
+
+        <section class="step" id="save" aria-labelledby="save-title"><div class="number">Step 8</div><h2 id="save-title">Save your work</h2><p class="purpose">Keep both an editable scene and a figure that another person can understand.</p><ol>
+          <li>Return to a clean binding-site view with the ligand, complete nearby residues, a few useful labels and any measured distance you want to show.</li>
+          <li>Use File → Save Session As to save a <code>.pse</code> file. This preserves the scene so you can edit it later.</li>
+          <li>Use File → Save Image to export an annotated PNG. Check that labels, ligand and key residues are visible at the saved size.</li>
+          <li>Open the saved files once to confirm that they are usable.</li>
+        </ol><p class="check"><strong>Check:</strong> Your session reopens and your image shows the ligand-binding site clearly.</p></section>
+      </div>
+    </div>
+    <section class="resources" aria-labelledby="resources-title"><h2 id="resources-title">Structures and references</h2><ul><li><a href="https://www.rcsb.org/structure/1IEP" target="_blank" rel="noopener noreferrer">RCSB PDB 1IEP</a> for Abl with imatinib.</li><li><a href="https://www.rcsb.org/structure/1M52" target="_blank" rel="noopener noreferrer">RCSB PDB 1M52</a> for Abl with PD173955.</li><li><a href="https://pymol.org/pymol-command-ref.html" target="_blank" rel="noopener noreferrer">PyMOL Command Reference</a> for representations, selection, distance, labels and alignment.</li><li><a href="https://pymol.org/tutorials/scripting/PyMOLSelectionOperators-v2.pdf" target="_blank" rel="noopener noreferrer">PyMOL Selection Operator Table</a> for selections such as <code>within</code> and <code>byres</code>.</li></ul></section>
+  </main>
+  <footer><div class="wrap"><p>Practical design: Yu Zhu and Taufiq Rahman</p><p>Found an error? <a href="mailto:yz876@cam.ac.uk">Contact Yu Zhu</a></p></div></footer>
+</body>
+</html>

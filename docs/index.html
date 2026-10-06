@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Two-day MPhil Molecular Discovery Practical covering protein structures, molecular recognition, pharmacophores, docking and candidate prioritisation.">
+  <meta name="theme-color" content="#122a43">
+  <meta name="github-repository" content="JudeYu99/molecular-discovery-practical-students">
+  <title>Molecular Discovery Practical · Department of Pharmacology</title>
+  <style>
+    :root { color-scheme:light; --navy:#122a43; --blue:#145a82; --teal:#137c80; --ink:#172b3a; --muted:#4d6374; --line:#d6e3e8; --paper:#f4f8fa; --white:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:var(--blue); }
+    .wrap { width:min(1080px,calc(100% - 40px)); margin:auto; }
+    header { background:var(--navy); color:var(--white); padding:19px 0; }
+    header .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-size:1.07rem; font-weight:760; letter-spacing:.01em; }
+    .unit { color:#d4e8ee; font-size:.91rem; text-align:right; }
+    main { padding:48px 0 70px; }
+    .eyebrow { color:var(--teal); font-size:.82rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.25rem,5vw,3.65rem); line-height:1.08; letter-spacing:-.04em; max-width:850px; margin:11px 0 19px; }
+    .intro { color:var(--muted); font-size:1.12rem; max-width:870px; margin:0 0 25px; }
+    .journey { display:grid; grid-template-columns:1fr; gap:12px; margin:0 0 28px; }
+    .journey-day { background:var(--white); border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:10px; padding:14px 16px; }
+    .journey-day:last-child { border-top-color:var(--blue); }
+    .journey-day strong { display:block; color:var(--navy); font-size:.82rem; letter-spacing:.09em; text-transform:uppercase; margin-bottom:7px; }
+    .journey-day p { margin:0; color:var(--muted); font-weight:650; }
+    .journey-day b { color:var(--teal); padding:0 4px; }
+    .notice { background:#e8f2f4; border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:17px 20px; margin-bottom:42px; }
+    .notice h2 { font-size:1.13rem; margin:0 0 4px; }
+    .notice p { margin:0; color:#33536a; }
+    .day { margin-top:42px; }
+    .day-head { border-top:4px solid var(--navy); padding-top:17px; margin-bottom:18px; }
+    .day h2 { font-size:clamp(1.75rem,3.5vw,2.25rem); line-height:1.18; letter-spacing:-.025em; margin:0 0 7px; }
+    .day-head p { color:var(--muted); max-width:850px; margin:0; }
+    .day-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(290px,1fr); gap:18px; align-items:start; }
+    .panel { background:var(--white); border:1px solid var(--line); border-radius:15px; box-shadow:0 8px 24px rgba(18,42,67,.045); padding:22px; }
+    .panel h3 { font-size:1.15rem; margin:0 0 13px; }
+    .points { margin:0; padding-left:21px; }
+    .points li { padding-left:3px; }
+    .points li+li { margin-top:11px; }
+    .points strong { display:block; line-height:1.3; }
+    .points span { color:var(--muted); font-size:.93rem; }
+    .guide-link { display:inline-flex; margin-top:18px; padding:8px 12px; border:1px solid var(--blue); border-radius:8px; text-decoration:none; font-weight:740; }
+    .guide-link:hover, .guide-link:focus-visible { background:#e8f2f4; }
+    .side-stack { display:grid; gap:16px; }
+    .resource { border-top:1px solid var(--line); padding:14px 0; }
+    .resource:first-of-type { border-top:0; padding-top:0; }
+    .resource:last-child { padding-bottom:0; }
+    .resource .label { color:var(--teal); font-size:.76rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .resource h4 { font-size:1.07rem; margin:3px 0 5px; }
+    .resource p { color:var(--muted); font-size:.92rem; margin:0 0 10px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; background:var(--blue); color:var(--white); border-radius:8px; padding:9px 13px; text-decoration:none; font-size:.91rem; font-weight:740; }
+    .button:hover, .button:focus-visible { background:#0b405f; }
+    footer { border-top:1px solid var(--line); padding:24px 0 34px; color:var(--muted); font-size:.92rem; }
+    footer .wrap { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    footer p { margin:0; }
+    @media (max-width:820px) { .day-grid { grid-template-columns:1fr; } }
+    @media (max-width:650px) { main { padding-top:34px; } header .wrap { align-items:flex-start; flex-direction:column; gap:3px; } .unit { text-align:left; } .journey { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><div class="brand">Molecular Discovery Practical</div><div class="unit">Department of Pharmacology · University of Cambridge</div></div></header>
+  <main class="wrap">
+    <div class="eyebrow">Day 1 · MPhil practical</div>
+    <h1>Understand the target and its ligands.</h1>
+    <p class="intro">Explore Abl kinase through structure inspection, molecular recognition and pocket assessment. LigandLab uses a separate small set to teach ligand-based pharmacophores.</p>
+    <div class="journey" aria-label="Practical workflow">
+      <div class="journey-day"><strong>Day 1 workflow</strong><p>Target structure <b>→</b> ligand recognition <b>→</b> binding pockets</p></div>
+    </div>
+    <section class="notice" aria-labelledby="prepare-title"><h2 id="prepare-title">Before you arrive</h2><p>Bring a charged laptop with PyMOL installed. You will also need a Google account to run the Colab notebooks.</p></section>
+
+    <section class="day" aria-labelledby="day1-title">
+      <div class="day-head"><h2 id="day1-title">Day 1 · Protein structures and molecular recognition</h2><p>Inspect a protein–ligand complex, explain plausible interactions and compare the known site with predicted pockets.</p></div>
+      <div class="day-grid">
+        <div class="panel"><h3>What we will do</h3><ul class="points">
+          <li><strong>Understand the target</strong><span>Compare experimental and predicted structures using UniProt, PDB and AlphaFold Database.</span></li>
+          <li><strong>Explore structures in PyMOL</strong><span>Navigate, change representations, select a binding site, measure contacts, superpose structures and save figures. Electrostatics and mutagenesis are short demonstrations.</span></li>
+          <li><strong>Inspect ligand recognition</strong><span>Retrieve the ligand's chemical identity, then compare your PyMOL interpretation with PLIP, PoseView and ContactCanvas.</span></li>
+          <li><strong>Compare pharmacophore ideas</strong><span>Identify structure-based features and use LigandLab to explore similarity and shared ligand features.</span></li>
+          <li><strong>Assess binding pockets</strong><span>Use ProteinsPlus and DoGSite3 to compare predicted pockets with the known ligand site.</span></li>
+        </ul><a class="guide-link" href="pymol.html">Open PyMOL guide ↗</a></div>
+        <div class="side-stack">
+          <div class="panel"><h3>Day 1 notebooks</h3>
+            <div class="resource"><div class="label">Notebook 1</div><h4>ContactCanvas · interactions</h4><p>Compare a 2D interaction diagram and 3D view with the binding site you inspected in PyMOL.</p><a class="button" id="contact-link" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day1_01_interaction_diagrams_colab.ipynb" target="_blank" rel="noopener noreferrer">Open Notebook</a></div>
+            <div class="resource"><div class="label">Notebook 2</div><h4>LigandLab · similarity and pharmacophores</h4><p>Compare 2D similarity and inspect shared features from a prepared ligand set.</p><a class="button" id="pharm-link" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day1_02_ligand_pharmacophore_colab.ipynb" target="_blank" rel="noopener noreferrer">Open Notebook</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice" aria-label="Day 2 release"><p>Day 2 resources will be released during the second session.</p></section>
+  </main>
+  <footer><div class="wrap"><p>Practical design: Yu Zhu and Taufiq Rahman</p><p>Found an error? <a href="mailto:yz876@cam.ac.uk">Contact Yu Zhu</a></p></div></footer>
+</body>
+</html>
