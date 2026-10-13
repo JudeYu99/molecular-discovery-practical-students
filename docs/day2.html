@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student guide and timetable for Day 2 of the Molecular Discovery Practical.">
+  <meta name="theme-color" content="#122a43">
+  <title>Day 2 Practical Guide · Molecular Discovery Practical</title>
+  <style>
+    :root { color-scheme:light; --navy:#122a43; --blue:#145a82; --teal:#137c80; --ink:#172b3a; --muted:#4d6374; --line:#d6e3e8; --paper:#f4f8fa; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    a { color:var(--blue); }
+    .wrap { width:min(1080px,calc(100% - 40px)); margin:auto; }
+    header { background:var(--navy); color:var(--white); padding:19px 0; }
+    header .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { color:var(--white); text-decoration:none; font-size:1.07rem; font-weight:760; }
+    .unit { color:#d4e8ee; font-size:.91rem; text-align:right; }
+    main { padding:38px 0 70px; }
+    .back { display:inline-block; margin-bottom:18px; font-weight:720; }
+    .eyebrow { color:var(--teal); font-size:.82rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.2rem,5vw,3.45rem); line-height:1.1; letter-spacing:-.04em; margin:8px 0 14px; }
+    .intro { color:var(--muted); max-width:850px; font-size:1.11rem; margin:0 0 25px; }
+    .start { background:#e8f2f4; border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:19px 22px; margin-bottom:28px; }
+    .start h2 { font-size:1.15rem; margin:0 0 6px; }
+    .start p { margin:0; color:#33536a; }
+    .buttons { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; background:var(--blue); color:var(--white); border-radius:8px; padding:9px 13px; text-decoration:none; font-size:.92rem; font-weight:740; }
+    .button.secondary { color:var(--blue); background:var(--white); border:1px solid var(--blue); }
+    section { scroll-margin-top:18px; }
+    .card { background:var(--white); border:1px solid var(--line); border-radius:15px; box-shadow:0 8px 24px rgba(18,42,67,.045); padding:23px 25px; margin-top:20px; }
+    .card h2 { font-size:1.55rem; line-height:1.22; margin:0 0 10px; }
+    .card h3 { font-size:1.08rem; margin:18px 0 6px; }
+    .card p { margin:0 0 10px; }
+    .card ul, .card ol { margin:0; padding-left:22px; }
+    .card li+li { margin-top:7px; }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; background:var(--white); }
+    th { background:var(--navy); color:var(--white); text-align:left; }
+    th, td { padding:11px 12px; border:1px solid var(--line); vertical-align:top; }
+    tbody tr:nth-child(even) { background:#edf4f7; }
+    .time { white-space:nowrap; font-weight:750; }
+    .steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:18px; }
+    .step { background:var(--white); border:1px solid var(--line); border-radius:13px; padding:20px 21px; }
+    .step .number { color:var(--teal); font-size:.78rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
+    .step h3 { margin:4px 0 7px; font-size:1.23rem; }
+    .step p { color:var(--muted); margin:0 0 9px; }
+    .record { background:#f0f6f8; border-radius:8px; padding:10px 12px; font-size:.93rem; }
+    .note { border-left:4px solid #d28b1d; background:#fff8e8; padding:13px 15px; margin-top:16px; }
+    footer { border-top:1px solid var(--line); padding:24px 0 34px; color:var(--muted); font-size:.92rem; }
+    footer .wrap { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    footer p { margin:0; }
+    @media (max-width:760px) { .steps { grid-template-columns:1fr; } header .wrap { align-items:flex-start; flex-direction:column; gap:3px; } .unit { text-align:left; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="brand" href="index.html">Molecular Discovery Practical</a><div class="unit">Department of Pharmacology · University of Cambridge</div></div></header>
+  <main class="wrap">
+    <a class="back" href="index.html">← Back to the workshop overview</a>
+    <div class="eyebrow">Day 2 · 14:00 to 17:00</div>
+    <h1>Druggability, docking and refinement</h1>
+    <p class="intro">Use c-Abl as a worked system. Assess a pocket, compare focused and blind docking, examine imatinib and a caffeine comparison decoy, then inspect a selected pose before and after local minimisation.</p>
+
+    <section class="start" aria-labelledby="start-title">
+      <h2 id="start-title">Start here</h2>
+      <p>Open DockLab in Colab and select a CPU runtime. The built-in Demo option loads the worked receptor and ligands automatically. Download the sample pack if you want the input files, box settings, activity notes and results worksheet.</p>
+      <div class="buttons">
+        <a class="button" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day2_01_vina_docking_colab.ipynb" target="_blank" rel="noopener noreferrer">Open DockLab</a>
+        <a class="button secondary" href="examples/day2_sample_data.zip" download>Download Sample Data</a>
+        <a class="button secondary" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day1_01_interaction_diagrams_colab.ipynb" target="_blank" rel="noopener noreferrer">Open ContactCanvas</a>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="timetable-title">
+      <h2 id="timetable-title">Day 2 timetable</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Time</th><th>Activity</th><th>What you will do</th></tr></thead>
+        <tbody>
+          <tr><td class="time">14:00 to 14:15</td><td><strong>Recap and druggability</strong></td><td>Connect the Day 1 binding-site observations with pocket selection for docking.</td></tr>
+          <tr><td class="time">14:15 to 14:40</td><td><strong>Assess the pocket and box</strong></td><td>Inspect DoGSite3 predictions, choose the known c-Abl site, and adjust the focused box in 3D.</td></tr>
+          <tr><td class="time">14:40 to 15:20</td><td><strong>Focused docking comparison</strong></td><td>Dock imatinib and caffeine with the same box and settings. Save both result bundles.</td></tr>
+          <tr><td class="time">15:20 to 15:30</td><td><strong>Break</strong></td><td>Keep any running Colab calculation open.</td></tr>
+          <tr><td class="time">15:30 to 15:50</td><td><strong>Blind docking</strong></td><td>Start a whole-protein imatinib search and compare its site placement with the focused run.</td></tr>
+          <tr><td class="time">15:50 to 16:20</td><td><strong>Scores, poses and contacts</strong></td><td>Choose representative poses and compare their Vina scores and ContactCanvas diagrams.</td></tr>
+          <tr><td class="time">16:20 to 16:45</td><td><strong>Post-docking minimisation</strong></td><td>Minimise one imatinib pose and compare the structure and contacts before and after.</td></tr>
+          <tr><td class="time">16:45 to 16:55</td><td><strong>Optional SwissSimilarity activity</strong></td><td>Use imatinib as a query and inspect two candidates from a small ligand-based search.</td></tr>
+          <tr><td class="time">16:55 to 17:00</td><td><strong>Recap</strong></td><td>State which evidence supports your preferred pose and what remains uncertain.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><strong>Timing note:</strong> blind docking can take longer than a focused search. Start it promptly, then continue inspecting the focused results while it runs. Your instructor may provide a cached result if needed.</p>
+    </section>
+
+    <section class="card" aria-labelledby="activities-title">
+      <h2 id="activities-title">Activities and questions</h2>
+      <div class="steps">
+        <article class="step"><div class="number">Activity 1</div><h3>Assess a targetable pocket</h3><p>Open ProteinsPlus and use DoGSite3 for the c-Abl structure. Compare the highest-ranked predicted pockets with the known ligand site.</p><div class="record"><strong>Record:</strong> pocket location, size, enclosure, hydrophobic character and one limitation of the prediction.</div></article>
+        <article class="step"><div class="number">Activity 2</div><h3>Set a focused docking box</h3><p>Use the supplied centre and size as a starting point. Move and resize the orange box while checking the X, Y and Z directions.</p><div class="record"><strong>Check:</strong> the box covers the ligand site with enough space for the complete ligand.</div></article>
+        <article class="step"><div class="number">Activity 3</div><h3>Compare two ligands</h3><p>Run imatinib first. Download its results. Return to the input step, choose caffeine, and rerun with exactly the same focused settings.</p><div class="record"><strong>Record:</strong> best score, chosen pose and whether each ligand occupies the expected pocket.</div></article>
+        <article class="step"><div class="number">Activity 4</div><h3>Compare focused and blind docking</h3><p>Run imatinib with a whole-protein box. Compare the predicted site, score and calculation time with the focused search.</p><div class="record"><strong>Think:</strong> did the blind search recover the known site, and what sampling limitations remain?</div></article>
+        <article class="step"><div class="number">Activity 5</div><h3>Inspect interactions</h3><p>Use DockLab to select a pose. Open ContactCanvas with the matching protein PDB and individual <code>pose_N.sdf</code> file.</p><div class="record"><strong>Compare:</strong> residue contacts, interaction types and geometry for imatinib and caffeine.</div></article>
+        <article class="step"><div class="number">Activity 6</div><h3>Minimise and reassess</h3><p>Minimise one selected imatinib pose. Compare its 3D position and Vina score before and after, then generate both ContactCanvas diagrams.</p><div class="record"><strong>Record:</strong> which contacts appeared, disappeared or changed geometry.</div></article>
+        <article class="step"><div class="number">Optional activity</div><h3>Search by ligand similarity</h3><p>Open SwissSimilarity, enter imatinib, choose a small library and compare a 2D method with a 3D or combined method.</p><div class="record"><strong>Record:</strong> method, library, similarity score and two candidates worth investigating.</div></article>
+        <article class="step"><div class="number">Final discussion</div><h3>Make a supported conclusion</h3><p>Combine the pocket evidence, docking score, pose geometry and interaction pattern. Identify one result you trust and one uncertainty.</p><div class="record"><strong>Remember:</strong> docking scores and geometric contacts are hypotheses rather than measurements of affinity or activity.</div></article>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="outputs-title">
+      <h2 id="outputs-title">Files to keep</h2>
+      <ul>
+        <li>The completed student results worksheet.</li>
+        <li>The imatinib and caffeine DockLab result bundles.</li>
+        <li>A PNG showing one selected docked pose.</li>
+        <li>ContactCanvas diagrams for both ligands.</li>
+        <li>The minimised imatinib pose and before-and-after interaction diagrams.</li>
+      </ul>
+      <h3>Interpret the comparison carefully</h3>
+      <p>Caffeine is included to give a clear teaching contrast. It is not a validated inactive control for c-Abl. It is also much smaller than imatinib, so size contributes to the difference in docking score and interaction count.</p>
+    </section>
+  </main>
+  <footer><div class="wrap"><p>Practical design: Yu Zhu and Taufiq Rahman</p><p>Found an error? <a href="mailto:yz876@cam.ac.uk">Contact Yu Zhu</a></p></div></footer>
+</body>
+</html>

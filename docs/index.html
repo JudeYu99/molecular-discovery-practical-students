@@ -63,11 +63,12 @@
 <body>
   <header><div class="wrap"><div class="brand">Molecular Discovery Practical</div><div class="unit">Department of Pharmacology · University of Cambridge</div></div></header>
   <main class="wrap">
-    <div class="eyebrow">MPhil in Therapeutic Sciences - In Silico workshop Day 1</div>
-    <h1>Understand the target and its ligands.</h1>
-    <p class="intro">Explore Abl kinase through structure inspection, molecular recognition and pocket assessment. LigandLab uses a separate small set to teach ligand-based pharmacophores.</p>
+    <div class="eyebrow">MPhil in Therapeutic Sciences - In Silico workshop</div>
+    <h1>From molecular recognition to candidate assessment.</h1>
+    <p class="intro">Explore Abl kinase through structure inspection, molecular recognition, pocket assessment, docking, local refinement and candidate comparison.</p>
     <div class="journey" aria-label="Practical workflow">
       <div class="journey-day"><strong>Day 1 workflow</strong><p>Target structure <b>→</b> ligand recognition <b>→</b> binding pockets</p></div>
+      <div class="journey-day"><strong>Day 2 workflow</strong><p>Druggability <b>→</b> docking <b>→</b> interaction comparison <b>→</b> local refinement</p></div>
     </div>
     <section class="notice" aria-labelledby="prepare-title"><h2 id="prepare-title">Before you arrive</h2><p>Bring a charged laptop with PyMOL installed. You will also need a Google account to run the Colab notebooks.</p></section>
 
@@ -90,7 +91,27 @@
       </div>
     </section>
 
-    <section class="notice" aria-label="Day 2 release"><p>Day 2 resources will be released during the second session.</p></section>
+    <section class="day" aria-labelledby="day2-title">
+      <div class="day-head"><h2 id="day2-title">Day 2 · Druggability, docking and refinement</h2><p>14:00 to 17:00. Choose a plausible pocket, compare focused and blind docking, inspect two contrasting ligands, and examine local rearrangement after minimisation.</p></div>
+      <div class="day-grid">
+        <div class="panel"><h3>What we will do</h3><ul class="points">
+          <li><strong>Assess pocket druggability</strong><span>Use ProteinsPlus and DoGSite3 to examine pocket position, size, enclosure and chemical character before defining a docking box.</span></li>
+          <li><strong>Compare focused and blind docking</strong><span>Target the known c-Abl pocket, then compare the result with a whole-protein search.</span></li>
+          <li><strong>Compare two ligands</strong><span>Dock imatinib as the expected binder and caffeine as a simple comparison decoy. Compare scores, poses and interaction patterns.</span></li>
+          <li><strong>Minimise one pose</strong><span>Inspect the complex before and after Vina local minimisation, then compare the interaction diagrams.</span></li>
+          <li><strong>Explore ligand-based screening if time permits</strong><span>Use a lead compound in SwissSimilarity and compare candidates returned by different similarity methods.</span></li>
+        </ul><a class="guide-link" href="day2.html">Open Day 2 guide ↗</a></div>
+        <div class="side-stack">
+          <div class="panel"><h3>Day 2 resources</h3>
+            <div class="resource"><div class="label">Worked example</div><h4>c-Abl sample data</h4><p>Download the prepared receptor, imatinib, caffeine comparison decoy, focused box settings, activity notes and results worksheet.</p><a class="button" href="examples/day2_sample_data.zip" download>Download Sample Data</a></div>
+            <div class="resource"><div class="label">Notebook 3</div><h4>DockLab · pockets, docking and refinement</h4><p>Adjust a visible docking box, run focused or blind docking, explore poses, and minimise a selected pose.</p><a class="button" id="docklab-link" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day2_01_vina_docking_colab.ipynb" target="_blank" rel="noopener noreferrer">Open Notebook</a></div>
+            <div class="resource"><div class="label">Interaction comparison</div><h4>ContactCanvas · reuse on Day 2</h4><p>Compare imatinib with caffeine, or compare a selected pose before and after minimisation.</p><a class="button" href="https://colab.research.google.com/github/JudeYu99/molecular-discovery-practical-students/blob/main/day1_01_interaction_diagrams_colab.ipynb" target="_blank" rel="noopener noreferrer">Open Notebook</a></div>
+            <div class="resource"><div class="label">Optional web tool</div><h4>SwissSimilarity</h4><p>Use a lead compound to explore ligand-based virtual screening if time permits.</p><a class="button" href="https://www.swisssimilarity.ch/" target="_blank" rel="noopener noreferrer">Open SwissSimilarity</a></div>
+            <div class="resource"><div class="label">Pocket assessment</div><h4>ProteinsPlus</h4><p>Inspect predicted pockets with DoGSite3 before selecting the focused docking region.</p><a class="button" href="https://proteins.plus/" target="_blank" rel="noopener noreferrer">Open ProteinsPlus</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <footer><div class="wrap"><p>Practical design: Yu Zhu and Taufiq Rahman</p><p>Found an error? <a href="mailto:yz876@cam.ac.uk">Contact Yu Zhu</a></p></div></footer>
 </body>
